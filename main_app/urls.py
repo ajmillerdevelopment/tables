@@ -5,7 +5,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('menu/', views.menu, name='menu'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('covers/', views.covers, name='covers'),
+    path('covers/', views.covers_index, name='covers_index'),
     path('covers/<int:cover_id>/', views.cover_detail, name='cover_detail'),
     path('covers/new', views.cover_new, name='cover_new'),
     path('covers/<int:cover_id>/close', views.cover_close, name='cover_close')
