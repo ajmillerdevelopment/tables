@@ -50,6 +50,12 @@ Home Plate is a restaurant management app built with Django, PostgreSQL, and Mat
 * CSS: Cover Detail
 * CSS: Close Cover
 
+### Stretch Goals
+* Print Menu
+* Ticket Splitting
+* Entrees come with sides
+* Set time zone in admin
+
 ### Django Collector Requirements:
 Full CRUD on one model
 One-To-Many or Many-To many relationship between 2 models
