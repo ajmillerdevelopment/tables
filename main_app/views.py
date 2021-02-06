@@ -9,7 +9,7 @@ def menu(request):
     return render(request, 'menu.html', {'items': items})
 def tables_index(request):
     tables = Table.objects.all()
-    return render(request, 'tables_index.html', {'tables': tables})
+    return render(request, 'tables.html', {'tables': tables})
 def table_detail(request, table_id):
     table = Table.objects.get(id=table_id)
     return render(request, 'table_detail.html', {'table': table})

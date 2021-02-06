@@ -5,7 +5,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('menu/', views.menu, name='menu'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('tables_index/', views.tables_index, name='tables_index'),
+    path('tables/', views.tables_index, name='tables_index'),
     path('tables/<int:table_id>/', views.table_detail, name='table_detail'),
     path('tables/new', views.table_new, name='table_new'),
     path('tables/<int:table_id>/close', views.table_close, name='table_close')
