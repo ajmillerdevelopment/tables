@@ -18,19 +18,21 @@ class Item(models.Model):
     def __str__(self):
         return self.name
 
-class Cover(models.Model):
+class Table(models.Model):
     name = models.CharField(max_length=100),
-    table = models.IntegerField(default=0),
+    number = models.IntegerField(default=0),
     bill = models.DecimalField(max_digits=8, decimal_places=2),
     grat15 = models.DecimalField(max_digits=6, decimal_places=2),
     grat18 = models.DecimalField(max_digits=6, decimal_places=2),
     grat20 = models.DecimalField(max_digits=6, decimal_places=2),
     dtg = models.DateTimeField(auto_now=True)
     def __str__(self):
-        return self.name
+        return f'Table {self.number}'
     
-class Ticket(models.Model):
-    cover = models.ForeignKey(Cover, on_delete=models.CASCADE),
+class Cover(models.Model):
+    table = models.ForeignKey(Table, on_delete=models.CASCADE),
     seat = models.IntegerField,
     items = models.ManyToManyField(Item),
     subtot = models.DecimalField(max_digits=8, decimal_places=2)
+    def __str__(self):
+        return f'Table {self.table} Seat {self.seat}'
