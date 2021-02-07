@@ -1,15 +1,15 @@
 {%extends 'base.html'%}
 {%block title%}Tables{%endblock%}
 {%block content%}
-<h2>Tables:</h2>
+<h3>Tables:</h3>
     {% if tables.count %}
         {%for table in tables.all%}
         <!--Use Collapsables Later!-->
-            <div class="card">
+            <a href="/tables/{{table.id}}"><div class="card">
                 <div class="card-content">
-                    Table {{table.number}}, {{table.name}}
+                    Table {{table.number}}, {{table.name}}, seated at {{table.dtg}}
                 </div>
-            </div>
+            </div></a>
         {%endfor%}
     {%else%}
     <h4>No Tables</h4>

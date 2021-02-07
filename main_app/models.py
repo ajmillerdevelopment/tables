@@ -17,6 +17,13 @@ class Item(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     def __str__(self):
         return self.name
+  
+class Cover(models.Model):
+    seat = models.IntegerField
+    items = models.ManyToManyField(Item)
+    subtot = models.DecimalField(max_digits=8, decimal_places=2)
+    def __str__(self):
+        return f'Seat {self.seat}'
 
 class Table(models.Model):
     name = models.CharField(max_length=100)
@@ -26,13 +33,6 @@ class Table(models.Model):
     grat18 = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     grat20 = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     dtg = models.DateTimeField(auto_now_add=True)
+    covers = models.ManyToManyField(Cover)
     def __str__(self):
         return f'Table {self.number}'
-    
-class Cover(models.Model):
-    table = models.ForeignKey(Table, on_delete=models.CASCADE)
-    seat = models.IntegerField
-    items = models.ManyToManyField(Item)
-    subtot = models.DecimalField(max_digits=8, decimal_places=2, default=0)
-    def __str__(self):
-        return f'Table {self.table} Seat {self.seat}'

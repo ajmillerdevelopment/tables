@@ -1,5 +1,21 @@
 {%extends 'base.html'%}
 {%block title%}Table{%endblock%}
 {%block content%}
-<h1>Table</h1>
+<h3>Table</h3>
+<div class="card">
+    <div class="card-content">
+        Table {{table.number}}, {{table.name}}, seated at {{table.dtg}}
+        {%if tables.covers.count %}
+            {%for cover in table.covers.all %}
+                <p>Order: {{cover.seat}}</p>
+            {%endfor%}
+        {% else %}
+            <p>No Covers</p>
+        {%endif%}
+    </div>
+    <div class="card-action">
+        <a href="" class="btn">Add Order</a>
+        <a href="" class="btn">Close Table</a>
+    </div>
+</div>
 {%endblock%}
