@@ -7,14 +7,14 @@
         Table {{table.number}}, {{table.name}}, seated at {{table.dtg}}
         {%if table.orders.count %}
             {%for order in table.orders.all %}
-                <div class="card">
-                    <div class="card-content">
-                        Seat: {{order.seat}}
-                        {%for item in order.items.all %}
-                            <p>{{item.name}}</p>
-                        {%endfor%}
-                    </div>
+            <div class="collapsible">
+                <div class="collapsible-header">Seat: {{order.seat}}</div>
+                <div class="collapsible-body">
+                    {%for item in order.items.all %}
+                        <p>{{item.name}}</p>
+                    {%endfor%}
                 </div>
+            </div>     
             {%endfor%}
         {% else %}
             <p>No Orders</p>
