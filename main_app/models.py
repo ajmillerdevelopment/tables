@@ -28,6 +28,8 @@ class Order(models.Model):
 class Table(models.Model):
     name = models.CharField(max_length=100)
     number = models.IntegerField(default=0)
+    subtot = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    tax = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     bill = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     grat15 = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     grat18 = models.DecimalField(max_digits=6, decimal_places=2, default=0)

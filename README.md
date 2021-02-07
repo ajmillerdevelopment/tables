@@ -65,6 +65,7 @@ Home Plate is a restaurant management app built with Django, PostgreSQL, and Mat
 * Dietary info for menu items
 * Description for menu items
 * Descriptions for orders (well done, no cheese etc)
+* State by State sales tax
 
 ### Django Collector Requirements:
 Full CRUD on one model

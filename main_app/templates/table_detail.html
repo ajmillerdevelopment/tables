@@ -14,6 +14,7 @@
                     {%for item in order.items.all %}
                         <p class="item{{order.id}}" id={{item.id}}>{{item.name}}</p>
                     {%endfor%}
+                    <p>Subtotal: ${{order.subtot}}</p>
                 <div class="card-action">
                     <button data-target="modal{{order.id}}" class="btn modal-trigger order-modal" id="{{order.id}}">Edit Order</button>
                 </div>
@@ -33,7 +34,12 @@
         {% else %}
             <p>No Orders</p>
         {%endif%}
-    </div>
+        </div>
+        <h6>Subtotal: ${{table.subtot}}</h6>
+        <h6>Tax: ${{table.tax}}</h6>
+        <h5>Total: ${{table.bill}}</h5>
+        <p>Suggested Gratuity:</p>
+        <small>15%: {{table.grat15}}</small> | <small>18%: {{table.grat18}}</small> | <small>20%: {{table.grat20}}</small>
     </div>
     <div class="card-action">
         <button data-target="modalbot" class="btn modal-trigger">Add Order</button>
