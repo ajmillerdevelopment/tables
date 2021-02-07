@@ -1,5 +1,10 @@
 {%extends 'base.html'%}
 {%block title%}New Table{%endblock%}
 {%block content%}
-<h1>New Table</h1>
+<h2>New Table</h2>
+<form action="/tables/new" method="post">
+{%csrf_token%}
+{{form.as_p}}
+<input type="submit" class="btn" value="Add Table">
+</form>
 {%endblock%}
