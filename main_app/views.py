@@ -39,3 +39,10 @@ def order_new(request, table_id):
         order = form.save()
         Table.objects.get(id=table_id).orders.add(order.id)
     return redirect(f'/tables/{table_id}/')
+
+def order_update(request, order_id, table_id):
+    o = Order.objects.get(id=order_id)
+    form = OrderForm(request.POST, instance=o)
+    if form.is_valid():
+        form.save()
+    return redirect(f'/tables/{table_id}')

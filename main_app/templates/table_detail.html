@@ -5,26 +5,41 @@
 <div class="card">
     <div class="card-content">
         Table {{table.number}}, {{table.name}}, seated at {{table.dtg}}
+        <div class="row">
         {%if table.orders.count %}
             {%for order in table.orders.all %}
-            <div class="collapsible">
-                <div class="collapsible-header">Seat: {{order.seat}}</div>
-                <div class="collapsible-body">
+            <div class="card">
+                <div class="card-header">Seat: <span class="seat{{order.id}}">{{order.seat}}</span></div>
+                <div class="card-content">
                     {%for item in order.items.all %}
-                        <p>{{item.name}}</p>
+                        <p class="item{{order.id}}" id={{item.id}}>{{item.name}}</p>
                     {%endfor%}
+                <div class="card-action">
+                    <button data-target="modal{{order.id}}" class="btn modal-trigger order-modal" id="{{order.id}}">Edit Order</button>
                 </div>
-            </div>     
+                </div>
+            </div>    
+            <div class="modal" id='modal{{order.id}}'>
+                <div class="modal-content">
+                    <h6>Edit Order</h6>
+                    <form action="/tables/{{table.id}}/orders/{{order.id}}/update" method="post" id="form{{order.id}}">
+                        {%csrf_token%}
+                        {{form.as_p}}
+                        <input type="submit" class="modal-close btn-flat" value="Update">
+                    </form>
+                </div>
+            </div> 
             {%endfor%}
         {% else %}
             <p>No Orders</p>
         {%endif%}
     </div>
+    </div>
     <div class="card-action">
-        <button data-target="modal1" class="btn modal-trigger">Add Order</button>
+        <button data-target="modalbot" class="btn modal-trigger">Add Order</button>
         <a href="" class="btn">Close Table</a>
     </div>
-    <div class="modal" id="modal1">
+    <div class="modal" id="modalbot">
         <div class="modal-content">
             <h4>Add Order</h4>
             <form action="/tables/{{table.id}}/orders/new" method="post">
