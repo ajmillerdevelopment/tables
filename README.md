@@ -34,15 +34,15 @@ Home Plate is a restaurant management app built with Django, PostgreSQL, and Mat
 * Model: Tickets
 * Model: Menu Items
 * Routes, Views, Placeholder Templates
-
 * Import Materalize + shop for functionality
 * View Homepage
+
 * View: Menu Management (Full CRUD in view)
 * View: View Covers
 * View: Create Cover
 * View: Cover Detail (RUD on covers plus CRUD on Tickets)
 * Function: Print Tickets
-* Function: Calculate Bill/Tips
+* Function: Calculate Bill/Tips/Tax
 * View: Close Cover
 * Function: Point of Sale
 * Function: Staff authentication
