@@ -18,7 +18,7 @@ class Item(models.Model):
     def __str__(self):
         return self.name
   
-class Cover(models.Model):
+class Order(models.Model):
     seat = models.IntegerField
     items = models.ManyToManyField(Item)
     subtot = models.DecimalField(max_digits=8, decimal_places=2)
@@ -33,6 +33,6 @@ class Table(models.Model):
     grat18 = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     grat20 = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     dtg = models.DateTimeField(auto_now_add=True)
-    covers = models.ManyToManyField(Cover)
+    orders = models.ManyToManyField(Order)
     def __str__(self):
         return f'Table {self.number}'

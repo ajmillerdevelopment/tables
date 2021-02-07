@@ -3,4 +3,4 @@ from .models import *
 # Register your models here.
 admin.site.register(Item)
 admin.site.register(Table)
-admin.site.register(Cover)
+admin.site.register(Order)
