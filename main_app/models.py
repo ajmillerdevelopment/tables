@@ -19,11 +19,11 @@ class Item(models.Model):
         return self.name
   
 class Order(models.Model):
-    seat = models.IntegerField
+    seat = models.IntegerField(default=0)
     items = models.ManyToManyField(Item)
-    subtot = models.DecimalField(max_digits=8, decimal_places=2)
+    subtot = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     def __str__(self):
-        return f'Seat {self.seat}'
+        return f' Seat {self.seat}'
 
 class Table(models.Model):
     name = models.CharField(max_length=100)

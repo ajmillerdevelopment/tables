@@ -15,8 +15,9 @@ def tables_index(request):
     return render(request, 'tables.html', {'tables': tables})
 
 def table_detail(request, table_id):
+    form = OrderForm()
     table = Table.objects.get(id=table_id)
-    return render(request, 'table_detail.html', {'table': table})
+    return render(request, 'table_detail.html', {'table': table, 'form': form})
 
 def table_new(request):
     if request.method == 'POST':
@@ -31,3 +32,10 @@ def table_new(request):
 def table_close(request, table_id):
     table = Table.objects.get(id=table_id)
     return render(request, 'table_close.html', {'table': table})
+
+def order_new(request, table_id):
+    form = OrderForm(request.POST)
+    if form.is_valid():
+        order = form.save()
+        Table.objects.get(id=table_id).orders.add(order.id)
+    return redirect(f'/tables/{table_id}/')

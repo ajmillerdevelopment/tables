@@ -5,17 +5,27 @@
 <div class="card">
     <div class="card-content">
         Table {{table.number}}, {{table.name}}, seated at {{table.dtg}}
-        {%if tables.covers.count %}
-            {%for cover in table.covers.all %}
-                <p>Order: {{cover.seat}}</p>
+        {%if table.orders.count %}
+            {%for order in table.orders.all %}
+                <p>Order: {{order.seat}}</p>
             {%endfor%}
         {% else %}
             <p>No Orders</p>
         {%endif%}
     </div>
     <div class="card-action">
-        <a href="" class="btn">Add Order</a>
+        <button data-target="modal1" class="btn modal-trigger">Add Order</button>
         <a href="" class="btn">Close Table</a>
+    </div>
+    <div class="modal" id="modal1">
+        <div class="modal-content">
+            <h4>Add Order</h4>
+            <form action="/tables/{{table.id}}/orders/new" method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+                <input type="submit" class="modal-close btn-flat" value="Add Order">
+            </form>
+        </div>
     </div>
 </div>
 {%endblock%}

@@ -8,7 +8,8 @@ urlpatterns = [
     path('tables/', views.tables_index, name='tables_index'),
     path('tables/<int:table_id>/', views.table_detail, name='table_detail'),
     path('tables/new', views.table_new, name='table_new'),
-    path('tables/<int:table_id>/close', views.table_close, name='table_close')
+    path('tables/<int:table_id>/close', views.table_close, name='table_close'),
+    path('tables/<int:table_id>/orders/new', views.order_new, name='order_new')
 ]
 # Account URLS
 # accounts/login/ [name='login']
