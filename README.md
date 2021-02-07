@@ -63,6 +63,9 @@ Home Plate is a restaurant management app built with Django, PostgreSQL, and Mat
 * Ticket Splitting
 * Entrees come with sides
 * Set time zone in admin
+* Dietary info for menu items
+* Description for menu items
+* Descriptions for orders (well done, no cheese etc)
 
 ### Django Collector Requirements:
 Full CRUD on one model
