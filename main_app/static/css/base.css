@@ -15,3 +15,7 @@ body {
 .new-table {
     display: block;
 }
+.modal {
+    height: 600px;
+    background-color: #FFECB3;
+}
