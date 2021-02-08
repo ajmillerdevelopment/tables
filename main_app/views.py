@@ -36,13 +36,10 @@ def home(request):
         order_form = OrderForm()
         return render(request, 'tables.html', {'table_form': table_form, 'order_form': order_form, 'tables': tables})
 def menu(request):
-    items = Item.objects.all()
-    return render(request, 'menu.html', {'items': items})
+    pass
 
 def table_detail(request, table_id):
-    form = OrderForm()
-    table = Table.objects.get(id=table_id)
-    return render(request, 'table_detail.html', {'table': table, 'form': form})
+    pass
 
 def table_new(request):
     if request.method == 'POST':
@@ -63,9 +60,9 @@ def order_new(request, table_id):
     if form.is_valid():
         order = form.save()
         subtot(order)
-        calc(table_id)
         Table.objects.get(id=table_id).orders.add(order.id)
-    return redirect(f'/tables/{table_id}/')
+        calc(table_id)
+    return redirect('/')
 
 def order_update(request, order_id, table_id):
     o = Order.objects.get(id=order_id)
@@ -74,12 +71,12 @@ def order_update(request, order_id, table_id):
         form.save()
         subtot(o)
         calc(table_id)
-    return redirect(f'/tables/{table_id}')
+    return redirect('/')
 
 def order_delete(request, order_id, table_id):
     Order.objects.get(id=order_id).delete()
     calc(table_id)
-    return redirect(f'/tables/{table_id}')
+    return redirect('/')
 
 def table_delete(request, table_id):
     t = Table.objects.get(id=table_id)

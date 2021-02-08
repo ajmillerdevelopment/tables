@@ -29,7 +29,7 @@
                                     <h6>Edit Order</h6>
                                     <form action="/tables/{{table.id}}/orders/{{order.id}}/update" method="post" id="form{{order.id}}">
                                         {%csrf_token%}
-                                        {{form.as_p}}
+                                        {{order_form.as_p}}
                                         <input type="submit" class="modal-close btn-flat" value="Update">
                                     </form>
                                 </div>
