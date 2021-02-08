@@ -10,7 +10,9 @@ urlpatterns = [
     path('tables/new', views.table_new, name='table_new'),
     path('tables/<int:table_id>/close', views.table_close, name='table_close'),
     path('tables/<int:table_id>/orders/new', views.order_new, name='order_new'),
-    path('tables/<int:table_id>/orders/<int:order_id>/update', views.order_update, name="order_update")
+    path('tables/<int:table_id>/orders/<int:order_id>/update', views.order_update, name="order_update"),
+    path('tables/<int:table_id>/orders/<int:order_id>/delete', views.order_delete, name="order_delete"),
+    path('tables/<int:table_id>/delete', views.table_delete, name='table_delete')
 ]
 # Account URLS
 # accounts/login/ [name='login']

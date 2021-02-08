@@ -45,7 +45,7 @@ def table_new(request):
         form = TableForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('/')
+        return redirect('/tables/')
     else:
         form = TableForm()
         return render(request, 'table_new.html',{ 'form': form})
@@ -71,3 +71,15 @@ def order_update(request, order_id, table_id):
         subtot(o)
         calc(table_id)
     return redirect(f'/tables/{table_id}')
+
+def order_delete(request, order_id, table_id):
+    Order.objects.get(id=order_id).delete()
+    calc(table_id)
+    return redirect(f'/tables/{table_id}')
+
+def table_delete(request, table_id):
+    t = Table.objects.get(id=table_id)
+    for order in t.orders.all():
+        order.delete()
+    t.delete()
+    return redirect('/tables/')

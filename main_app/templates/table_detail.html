@@ -17,6 +17,7 @@
                     <p>Subtotal: ${{order.subtot}}</p>
                 <div class="card-action">
                     <button data-target="modal{{order.id}}" class="btn modal-trigger order-modal" id="{{order.id}}">Edit Order</button>
+                    <button class="btn"><a href="/tables/{{table.id}}/orders/{{order.id}}/delete">Delete Order</a></button>
                 </div>
                 </div>
             </div>    
@@ -44,6 +45,7 @@
     <div class="card-action">
         <button data-target="modalbot" class="btn modal-trigger">Add Order</button>
         <a href="" class="btn">Close Table</a>
+        <a href="/tables/{{table.id}}/delete" class="btn">Delete Table</a>
     </div>
     <div class="modal" id="modalbot">
         <div class="modal-content">
