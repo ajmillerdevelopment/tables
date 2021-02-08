@@ -1,17 +1,17 @@
 {%extends 'base.html'%}
-{%block title%}Tables{%endblock%}
+{%block title%}Home Plate{%endblock%}
 {%block content%}
-<h3>Tables:</h3>
+<h3 class="center-align">Tables</h3>
     {% if tables.count %}
         <ul class="collapsible">
         {%for table in tables.all%}
             <li>
-                <div class="collapsible-header">{{table.name}}, Table {{table.number}}</div>
-                <div class="collapsible-body">
+                <div class="collapsible-header  orange lighten-3"><h5>{{table.name}}, Table {{table.number}}</h5></div>
+                <div class="collapsible-body amber lighten-4">
                     <div class="row">
                         {%if table.orders.count %}
                             {%for order in table.orders.all %}
-                            <div class="card">
+                            <div class="card orange lighten-3">
                                 <div class="card-header">Seat: <span class="seat{{order.id}}">{{order.seat}}</span></div>
                                 <div class="card-content">
                                     {%for item in order.items.all %}
@@ -19,8 +19,8 @@
                                     {%endfor%}
                                     <p>Subtotal: ${{order.subtot}}</p>
                                 <div class="card-action">
-                                    <button data-target="modal{{order.id}}" class="btn modal-trigger order-modal" id="{{order.id}}">Edit Order</button>
-                                    <button class="btn"><a href="/tables/{{table.id}}/orders/{{order.id}}/delete">Delete Order</a></button>
+                                    <button data-target="modal{{order.id}}" class="btn-small green lighten-2 modal-trigger white-text order-modal" id="{{order.id}}">Edit Order</button>
+                                    <a class="btn-small amber darken-4 white-text" href="/tables/{{table.id}}/orders/{{order.id}}/delete">Delete Order</a>
                                 </div>
                                 </div>
                             </div>    
@@ -44,16 +44,16 @@
                         <h5>Total: ${{table.bill}}</h5>
                         <p>Suggested Gratuity:</p>
                         <small>15%: {{table.grat15}}</small> | <small>18%: {{table.grat18}}</small> | <small>20%: {{table.grat20}}</small></br>
-                        <button data-target="modalord" class="btn modal-trigger">Add Order</button>
-                        <a href="" class="btn">Close Table</a>
-                        <a href="/tables/{{table.id}}/delete" class="btn">Delete Table</a>
+                        <button data-target="modalord" class="btn green lighten-2 modal-trigger">Add Order</button>
+                        <a href="" class="btn green lighten-2">Close Table</a>
+                        <a href="/tables/{{table.id}}/delete" class="btn amber darken-4 white-text">Delete Table</a>
                         <div class="modal" id="modalord">
                             <div class="modal-content">
                                 <h4>Add Order</h4>
                                 <form action="/tables/{{table.id}}/orders/new" method="post">
                                     {%csrf_token%}
                                     {{order_form.as_p}}
-                                    <input type="submit" class="modal-close btn-flat" value="Add Order">
+                                    <input type="submit" class="modal-close  btn-flat" value="Add Order">
                                 </form>
                             </div>
                         </div>
@@ -64,14 +64,14 @@
     {%else%}
     <h4>No Tables</h4>
     {%endif%}
-    <button data-target="modalbot" class="btn modal-trigger">Add Table</button>
+    <button data-target="modalbot" class="btn-large modal-trigger center-align new-table">Add Table</button>
     <div class="modal" id="modalbot">
         <div class="modal-content">
             <h4>Add Table</h4>
             <form action="/tables/new" method="post">
                 {%csrf_token%}
                 {{table_form.as_p}}
-                <input type="submit" class="modal-close btn-flat" value="Add Table">
+                <input type="submit" class="modal-close green lighten-2 btn" value="Add Table">
             </form>
         </div>
     </div>

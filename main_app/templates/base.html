@@ -6,15 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    {%block css%}{%endblock%}
     <title>{%block title%}{%endblock%}</title>
 </head>
-<body>
-    <nav>
-        <a href="/">home</a>
-        <a href="/tables/">tables</a>
-        <a href="/admin/">admin</a>
-    </nav>
+<body class="amber lighten-5">
     <main class="container">
         {%block content%}
         {%endblock%}

@@ -1,5 +1,17 @@
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+}
 .row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+.row .card {
+    margin: 10px;
+}
+.new-table {
+    display: block;
 }
