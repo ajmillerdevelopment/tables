@@ -3,12 +3,12 @@ M.AutoInit();
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, options);
+    var instances = M.Modal.init(elems);
   });
   
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems, options);
+    var instances = M.Collapsible.init(elems);
   });
 
 // Event listener on modal buttons to trigger script

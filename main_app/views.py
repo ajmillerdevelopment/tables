@@ -32,8 +32,9 @@ def home(request):
             form.save()
         return redirect('/')
     else:
-        form = TableForm()
-        return render(request, 'tables.html', {'form': form, 'tables': tables})
+        table_form = TableForm()
+        order_form = OrderForm()
+        return render(request, 'tables.html', {'table_form': table_form, 'order_form': order_form, 'tables': tables})
 def menu(request):
     items = Item.objects.all()
     return render(request, 'menu.html', {'items': items})
@@ -85,4 +86,4 @@ def table_delete(request, table_id):
     for order in t.orders.all():
         order.delete()
     t.delete()
-    return redirect('/tables/')
+    return redirect('/')
