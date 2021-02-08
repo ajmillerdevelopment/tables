@@ -25,15 +25,18 @@ def calc(table_id):
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
-
+    tables = Table.objects.all()
+    if request.method == 'POST':
+        form = TableForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('/')
+    else:
+        form = TableForm()
+        return render(request, 'tables.html', {'form': form, 'tables': tables})
 def menu(request):
     items = Item.objects.all()
     return render(request, 'menu.html', {'items': items})
-
-def tables_index(request):
-    tables = Table.objects.all()
-    return render(request, 'tables.html', {'tables': tables})
 
 def table_detail(request, table_id):
     form = OrderForm()

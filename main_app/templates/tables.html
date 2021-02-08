@@ -14,4 +14,16 @@
     {%else%}
     <h4>No Tables</h4>
     {%endif%}
+    <button data-target="modalbot" class="btn modal-trigger">Add Table</button>
+    <div class="modal" id="modalbot">
+        <div class="modal-content">
+            <h4>Add Table</h4>
+            <form action="" method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+                <input type="submit" class="modal-close btn-flat" value="Add Table">
+            </form>
+        </div>
+    </div>
+    
 {%endblock%}
